@@ -1,0 +1,2 @@
+df -h /raid/   	#This script shows how much free space is remaining on the raid 
+du -sh		 #This script shows how much space is being used on a certain directory
