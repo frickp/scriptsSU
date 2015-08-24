@@ -24,10 +24,12 @@ elif [ $# -ge 2 ]
 then
 	echo '2+ inputs detected. Closing greendragon...'
 	server=peter@greendragon.stanford.edu
+	USER=peter
 elif [ $# -ge 1 ]
 then	
 	echo '1 input detected. Closing greenseq'
 	server=peterfrick@greenseq.stanford.edu
+	USER=peterfrick
 fi
 
 
@@ -37,7 +39,10 @@ local_port=8888
 
 
 # Kill the ipython notebook server on the remote server
-ssh $server 'kill $(ps aux | grep -E "$USER.*[i]python.*--port=$remote_port" | awk '\''{print $2}'\'')'
+#ssh $server 'kill $(ps aux | grep -E "$USER.*[i]python.*--port=$remote_port" | awk '{print $2}')'
+
+ssh $server ps aux | grep -e $USER | grep -e [8]889 | awk '{print $2}'
 
 # Kill the SSH tunnel for ipython notebook
-kill $(ps aux | grep -E "$USER.*[s]sh -N -f -L localhost:$local_port:localhost:$remote_port" | awk '{print $2}')
+#kill $(ps aux | grep -E "$USER.*[s]sh -N -f -L localhost:$local_port:localhost:$remote_port" | awk '{print $2}')
+kill `ps aux | grep -e [l]ocalhost:8889 | awk '{print$2}'`

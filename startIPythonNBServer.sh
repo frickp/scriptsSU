@@ -43,7 +43,7 @@ ssh $server "nohup ipython notebook --pylab=inline --no-browser --port=$remote_p
 # Start SSH tunnel for port forwarding
 ssh -N -f -L localhost:$local_port:localhost:$remote_port $server
 
-echo "Now connected to " $HOSTNAME
+#echo "Now connected to " $HOSTNAME
 
 
 # Now you can access ipython notebook remotely via http://localhost:8888 on your favorite web browser
