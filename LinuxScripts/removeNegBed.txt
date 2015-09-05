@@ -1,0 +1,7 @@
+# Sometimes bed file gives an error because the 500 bp peak interval is negative (out of range)
+
+# This script makes all negative numbers equal to zero in the entire bed file
+cat Sample_Top50kPeaks_500bp.bed | awk '{$2 *= 0; print}'
+
+# This scripts shows only the negative peaks
+cat Sample_Top50kPeaks_500bp.bed | awk '$2<1' | awk '{$2 *= 0; print}'
