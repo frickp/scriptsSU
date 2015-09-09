@@ -1,7 +1,7 @@
 # Sometimes bed file gives an error because the 500 bp peak interval is negative (out of range)
+#check out this site for conditional awk statements
+http://unix.stackexchange.com/questions/141650/conditional-block-vs-conditional-statement-if
+
 
 # This script makes all negative numbers equal to zero in the entire bed file
-cat Sample_Top50kPeaks_500bp.bed | awk '{$2 *= 0; print}'
-
-# This scripts shows only the negative peaks
-cat Sample_Top50kPeaks_500bp.bed | awk '$2<1' | awk '{$2 *= 0; print}'
+cat ../150624scPC9/peakCalls_singles/PC9.sc.mergeAll_summits.flt.500bp.top50k.bed | awk '$2<1 {$2 *= 0; OFS="\t"; print};{OFS="\t";print}' > 150624scPC9.500bp.top50k.bed
