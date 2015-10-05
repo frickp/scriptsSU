@@ -1,0 +1,20 @@
+#!/usr/bin/env python
+
+import pysam
+import matplotlib.pyplot as plt
+
+#First, define the genome region to match the scATAC-seq paper
+samfile = pysam.AlignmentFile("/Users/frickpl/Desktop/Data/First_C1/PC9.sc.mergeAll.bam", "rb")
+
+chrLoc = {'ch': 'chr19', 'start': 36192000 , 'end': 36242000}
+groupNum = 50
+groupSize =  (chrLoc['end']-chrLoc['start'])/groupNum
+groups = range(chrLoc['start'],chrLoc['end'],groupSize)
+
+for i in groups:
+    #print [i , i + groupSize]
+    readCount=0
+    for reads in samfile.fetch('chr19',i,i + groupSize):
+        readCount = readCount + 1
+    print readCount
+    
