@@ -1,5 +1,10 @@
 #!/usr/bin/env python
 
+import os
+
+os.chdir(/raid/Tn5_chromatin/150624_Peter_Jason_Sarah_MiSeq/plf-libs/)
+pwd
+
 import pysam
 import matplotlib.pyplot as plt
 
