@@ -95,4 +95,3 @@ print "The data frame is..."
 print df
 
 plt.pcolor(df)
-plt.show()
