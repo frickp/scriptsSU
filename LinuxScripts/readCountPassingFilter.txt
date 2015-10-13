@@ -1,0 +1,1 @@
+samtools idxstats PC9.sc.mergeAll.bam | sed -n '1,23p' | awk '{print $3}' | paste -sd+ - | bc
